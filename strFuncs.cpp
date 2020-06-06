@@ -9,6 +9,9 @@ using namespace std;
 
 vector<char> stringToCharArray(string s) {
   vector<char> charvect(s.begin(), s.end());
+  for(size_t i = 0; i < charvect.size(); i++) {
+    charvect[i] = tolower(charvect[i]);
+  }
   return charvect;
 }
 
@@ -30,7 +33,7 @@ bool isAnagram(string s1, string s2){
   sort(v2.begin(), v2.end());
 
   for(long unsigned int i = 0; i < v1.size(); i++) {
-    if(v1[i] != v2[i]) {
+    if(v1 != v2) {
       return false;
     }
   }
@@ -44,7 +47,7 @@ bool isAnagram(string s1, string s2){
 bool isPalindrome(const string s1){
   int size = s1.size();
   for(int i = 0; i < size; i++) {
-    if(s1[i] != s1[size - 1 - i]) {
+    if(tolower(s1[i]) != tolower(s1[size - 1 - i])) {
       return false;
     }
   }
