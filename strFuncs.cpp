@@ -3,15 +3,38 @@
 #include <cstring>
 #include <algorithm>
 #include "strFuncs.h"
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+vector<char> stringToCharArray(string s) {
+  vector<char> charvect(s.begin(), s.end());
+  return charvect;
+}
 
 
 /* Precondition: Two valid strings s1 and s2, each containing a mix of alphabets, spaces and punctuations
  * Post condition: Return true if one string is an anagram of the other string. White spaces, punctuations and
  * the case for the letters (upper or lower) should not
- * affect your result. 
+ * affect your result.
  */
 bool isAnagram(string s1, string s2){
+  if(s1.size() != s2.size()) {
+    return false;
+  }
+
+  auto v1 = stringToCharArray(s1);
+  auto v2 = stringToCharArray(s2);
+
+  sort(v1.begin(), v1.end());
+  sort(v2.begin(), v2.end());
+
+  for(long unsigned int i = 0; i < v1.size(); i++) {
+    if(v1[i] != v2[i]) {
+      return false;
+    }
+  }
+
   return true;
 }
 
@@ -19,8 +42,12 @@ bool isAnagram(string s1, string s2){
  * Postcondition: Returns true if s1 is a palindrome, false otherwise
  *You should provide a recursive solution*/
 bool isPalindrome(const string s1){
-
+  int size = s1.size();
+  for(int i = 0; i < size; i++) {
+    if(s1[i] != s1[size - 1 - i]) {
+      return false;
+    }
+  }
   return true;
+
 }
-
-

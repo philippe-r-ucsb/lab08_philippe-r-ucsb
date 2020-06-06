@@ -7,10 +7,10 @@
 #include "linkedListFuncs.h"
 
 LinkedList * arrayToLinkedList(int *a, int size) {
-  
+
   LinkedList * list = new LinkedList;
 
-  list->head=NULL; 
+  list->head=NULL;
   list->tail=NULL;
 
   for (int i=0; i<size; i++) {
@@ -37,7 +37,7 @@ LinkedList * arrayToLinkedList(int *a, int size) {
 
 std::string intToString(int i) {
 // creates a stream like cout, cerr that writes to a string
-  std::ostringstream oss; 
+  std::ostringstream oss;
   oss << i;
   return oss.str(); // return the string result
 }
@@ -46,10 +46,10 @@ std::string arrayToString(int a[], int size) {
 
   std::ostringstream oss;
   // fencepost problem; first element gets no comma in front
-  oss << "{"; 
+  oss << "{";
 
   if (size>0)
-    oss << intToString(a[0]); 
+    oss << intToString(a[0]);
 
   for (int i=1; i<size; i++) {
     oss << "," << intToString(a[i]);
@@ -57,7 +57,7 @@ std::string arrayToString(int a[], int size) {
   oss << "}";
 
   return oss.str();
-  
+
 }
 
 
